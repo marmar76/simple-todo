@@ -1,0 +1,85 @@
+<head>
+  <title>simple-todos-blaze</title>
+  <!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+  <style>
+    body{
+      margin: 0;
+      padding: 0;
+    }
+    .popup{
+      padding: 2em;
+      margin: 2em;
+      overflow: visible;
+    }
+  </style>
+</head>
+
+<body>
+  {{> header}}
+  <div class="container">
+    <h1>Latest Note</h1>
+    <ul class="collection">
+      {{#each notes}}
+      {{> note}}
+      {{/each}}
+
+    </ul>
+  </div>
+  
+  {{> add}}
+  {{> forms}}
+  <script>
+    $(document).ready(function () {
+      // alert($("#nice").val());
+      // $('.modal').modal();
+    });
+  </script>
+</body>
+
+<template name="note">
+  <li class="collection-item">
+    {{text}}
+  </li>
+</template>
+
+<template name="header">
+  <nav class="red">
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Note Manager</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li class="nav-item">
+            <a class="waves-effect waves-light btn" href="#addNote" rel="modal:open">Add Notes</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</template>
+
+<template name="add">
+  <div id="addNote" class="modal popup">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <form class="add-form">
+        <p>Add Note</p>
+        <input type="text" name="text" id="text" placeholder="Add Note" value="">
+        <button type="submit">Add</button>
+      </form>
+    </div>
+  </div>
+</template>
+
+<template name="forms">
+  <form id="addNotes" class="modal popup">
+    <input type="button" value="">
+  </form>
+</template>
+
